@@ -1,4 +1,5 @@
 from .converter import Solar, Lunar, DateNotExist, Converter, SexagenaryBasic, Sexagenary
+from .hexagrams import *
 
 __all__ = [
     "Solar", "Lunar", "DateNotExist", "Converter", "SexagenaryBasic", "Sexagenary"

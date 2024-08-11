@@ -67,8 +67,8 @@ trigramsBranchStart = {
 }
 
 hexagramsNames = {
-    1: "Thiên Thiên Càn",
-    2: "Địa Địa Khôn",
+    1: "Thuần Càn",
+    2: "Thuần Khôn",
     3: "Thủy Lôi Truân",
     4: "Sơn Thủy Mông",
     5: "Thủy Thiên Nhu",
@@ -95,8 +95,8 @@ hexagramsNames = {
     26: "Sơn Thiên Đại Súc",
     27: "Sơn Lôi Di",
     28: "Trạch Phong Đại Quá",
-    29: "Thủy Thủy Khảm",
-    30: "Hỏa Hỏa Ly",
+    29: "Thuần Khảm",
+    30: "Thuần Ly",
     31: "Trạch Sơn Hàm",
     32: "Lôi Phong Hằng",
     33: "Thiên Sơn Độn",
@@ -117,14 +117,14 @@ hexagramsNames = {
     48: "Thủy Phong Tỉnh",
     49: "Trạch Hỏa Cách",
     50: "Hỏa Phong Đỉnh",
-    51: "Lôi Lôi Chấn",
-    52: "Sơn Sơn Cấn",
+    51: "Thuần Chấn",
+    52: "Thuần Cấn",
     53: "Phong Sơn Tiệm",
     54: "Lôi Trạch Quy Muội",
     55: "Lôi Hỏa Phong",
     56: "Hỏa Sơn Lữ",
-    57: "Phong Phong Tốn",
-    58: "Trạch Trạch Đoài",
+    57: "Thuần Tốn",
+    58: "Thuần Đoài",
     59: "Phong Thủy Hoán",
     60: "Thủy Trạch Tiết",
     61: "Phong Trạch Trung Phu",
@@ -204,12 +204,12 @@ hexagramsStructure = {
 
 basicHexagramsBranches = {
     1: ['tý', 'dần', 'thìn', 'ngọ', 'thân', 'tuất'],
-    2: ['dần', 'thìn', 'ngọ', 'thân', 'tuất', 'tý'],
-    3: ['thìn', 'ngọ', 'thân', 'tuất', 'tý', 'dần'],
+    2: ['tỵ', 'mão', 'sửu', 'hợi', 'dậu', 'mùi'],
+    3: ['mão', 'sửu', 'hợi', 'dậu', 'mùi', 'tỵ'],
     4: ['tý', 'dần', 'thìn', 'ngọ', 'thân', 'tuất'],
     5: ['sửu', 'hợi', 'dậu', 'mùi', 'tỵ', 'mão'],
-    6: ['mão', 'sửu', 'hợi', 'dậu', 'mùi', 'tỵ'],
-    7: ['tỵ', 'mão', 'sửu', 'hợi', 'dậu', 'mùi'],
+    6: ['dần', 'thìn', 'ngọ', 'thân', 'tuất', 'tý'],
+    7: ['thìn', 'ngọ', 'thân', 'tuất', 'tý', 'dần'],
     8: ['mùi', 'tỵ', 'mão', 'sửu', 'hợi', 'dậu']
  }
 
@@ -221,15 +221,3 @@ if __name__=="__init__":
         thuong, ha, *arg = hexagramsNames[que].lower().split()
         thuong, ha = trigramsMeaning[thuong], trigramsMeaning[ha]
         hexagramsStructure[(thuong, ha)] = que
-
-    # Generate the basic hexagram earthly branches
-    basicHexagramsBranches = {}
-    for que in range(1, 9):
-        start = earthlyBranches.index(trigramsBranchStart[trigramsNames[que]])
-        branches = []
-        for i in range(6):
-            if trigramsPros[que] == "+":
-                branches.append(earthlyBranches[(start + i * 2) % 12])
-            else:
-                branches.append(earthlyBranches[(start - i * 2) % 12])
-        basicHexagramsBranches[que] = branches
