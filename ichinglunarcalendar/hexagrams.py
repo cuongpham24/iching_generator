@@ -23,8 +23,17 @@ class Hexagram():
     def getConfig(self):
         self.structure = (self.top, self.bottom)
         self.number = hexagramsStructure[self.structure]
-        self.name = hexagramsNames[self.number]
         self.earthBranches = basicHexagramsBranches[self.bottom][:3] + basicHexagramsBranches[self.top][-3:]
+        self.mainElement = self.mainHexElement()
+        self.name = hexagramsNames[self.number]
 
+    def mainHexElement(self):
+        for hex in hexagramsFamily:
+            if self.number in hexagramsFamily[hex]:
+                return hex
+            
+    def getMainElement(self):
+        return trigramsElements[self.mainElement]
 
-    
+    def getEarthBranches(self):
+        return " ".join([earthlyBranches[i].capitalize() for i in self.earthBranches])
