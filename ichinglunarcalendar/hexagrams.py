@@ -18,22 +18,24 @@ class Hexagram():
 
         self.top = top
         self.bottom = bottom
-        self.getConfig()
+        self._getConfig()
 
-    def getConfig(self):
+    def _getConfig(self):
         self.structure = (self.top, self.bottom)
         self.number = hexagramsStructure[self.structure]
         self.earthBranches = basicHexagramsBranches[self.bottom][:3] + basicHexagramsBranches[self.top][-3:]
-        self.mainElement = self.mainHexElement()
+        self.mainElement = self._mainHexElement()
         self.name = hexagramsNames[self.number]
 
-    def mainHexElement(self):
+    def _mainHexElement(self):
         for hex in hexagramsFamily:
             if self.number in hexagramsFamily[hex]:
                 return hex
             
     def getMainElement(self):
+        """Get hexagram main element (simular to family element)"""
         return trigramsElements[self.mainElement]
 
     def getEarthBranches(self):
+        """Get earth branch for each line from bottom to top"""
         return " ".join([earthlyBranches[i].capitalize() for i in self.earthBranches])
