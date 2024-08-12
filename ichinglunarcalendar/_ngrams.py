@@ -238,3 +238,15 @@ if __name__=="__init__":
         thuong, ha, *arg = hexagramsNames[que].lower().split()
         thuong, ha = trigramsMeaning[thuong], trigramsMeaning[ha]
         hexagramsStructure[(thuong, ha)] = que
+
+    # Generate the basic hexagram earthly branches
+    basicHexagramsBranches = {}
+    for que in range(1, 9):
+        start = earthlyBranches.index(trigramsBranchStart[trigramsNames[que]])
+        branches = []
+        for i in range(6):
+            if trigramsPros[que] == "+":
+                branches.append(earthlyBranches[(start + i * 2) % 12])
+            else:
+                branches.append(earthlyBranches[(start - i * 2) % 12])
+        basicHexagramsBranches[que] = branches
