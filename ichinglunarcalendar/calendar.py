@@ -356,3 +356,5 @@ class Sexagenary(object):
     def __repr__(self):
         return f"Sexagenary(year={self.yearConverted}, month={self.monthConverted}, day={self.dayConverted})"
 
+    def getNumericData(self):
+        return [*self.year, *self.month, *self.day]

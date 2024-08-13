@@ -138,3 +138,9 @@ class Hexagrams():
 
     def __repr__(self):
         return f"Quẻ chính: {self._mainHex.name}; Quẻ biến: {self._transformedHex.name}"
+    
+    def getMainHexagram(self):
+        return self._mainHex
+    
+    def getTransformedHexagram(self):
+        return self._transformedHex
