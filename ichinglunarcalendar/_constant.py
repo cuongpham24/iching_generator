@@ -14,3 +14,20 @@ elements = {
     "hỏa": 4,
     "thổ": 5
 }
+
+elementGeneratingCycle = {
+    2: 3,
+    3: 4,
+    4: 5,
+    5: 1,
+    1: 2
+}
+
+elementControllingCycle = {
+    2: 4,
+    4: 1,
+    1: 3,
+    3: 5,
+    5: 2
+}
+

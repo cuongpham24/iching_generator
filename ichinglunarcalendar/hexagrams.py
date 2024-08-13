@@ -19,23 +19,39 @@ class Hexagram():
         self.top = top
         self.bottom = bottom
         self._getConfig()
+        self._getData()
 
     def _getConfig(self):
         self.structure = (self.top, self.bottom)
         self.number = hexagramsStructure[self.structure]
-        self.earthBranches = basicHexagramsBranches[self.bottom][:3] + basicHexagramsBranches[self.top][-3:]
-        self.mainElement = self._mainHexElement()
+        self._earthBranches = basicHexagramsBranches[self.bottom][:3] + basicHexagramsBranches[self.top][-3:]
+        self._mainElement = self._mainHexElement()
         self.name = hexagramsNames[self.number]
 
     def _mainHexElement(self):
         for hex in hexagramsFamily:
             if self.number in hexagramsFamily[hex]:
+                # Return associated original mmain family element 
                 return hex
             
+    def _getData(self):
+        """Store hexamgram in a vector"""
+        self.config = []
+        # Lines configuaration
+        self.config += [int(i) for i in trigrams[self.bottom]]
+        self.config += [int(i) for i in trigrams[self.top]]
+        # Hexagram element
+        self.config += [elements[trigramsElements[self._mainElement]]]
+        # Earth branch elements
+        self.config += self._earthBranches
+    
+    def _getRelations(self):
+        pass
+
     def getMainElement(self):
         """Get hexagram main element (simular to family element)"""
-        return trigramsElements[self.mainElement]
+        return trigramsElements[self._mainElement]
 
     def getEarthBranches(self):
         """Get earth branch for each line from bottom to top"""
-        return " ".join([earthlyBranches[i].capitalize() for i in self.earthBranches])
+        return " ".join([earthlyBranches[i].capitalize() for i in self._earthBranches])
