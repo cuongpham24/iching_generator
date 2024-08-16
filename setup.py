@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="iching",
-    version="0.1.0",
+    version="0.1.1",
     description="Create iching hexagrams",
     author="Vinson Pham",
     author_email="vinsonpham24@gmail.com",

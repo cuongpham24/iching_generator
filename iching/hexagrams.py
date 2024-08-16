@@ -80,7 +80,7 @@ class Hexagram():
     
 
 class Hexagrams():
-    def __init__(self, top: int, bottom: int, actives):
+    def __init__(self, top: int, bottom: int, actives=None):
         """
         Parameters
         ----------
@@ -105,15 +105,18 @@ class Hexagrams():
         mainHex = [int(line) for line in mainHex]
 
         if isinstance(self._actives, list):
-            # Handle the case where actives is a list of numbers
-            for num in self._actives:
-                assert (num > 0 and num < 7), "Invalid active lines. Values must be from 1 to 6"
-            
-            for line in self._actives:
-                if mainHex[line - 1] == 1:
-                    mainHex[line - 1] = 0
-                else:
-                    mainHex[line - 1] = 1
+            if len(self._actives) > 0:
+                # Handle the case where actives is a list of numbers
+                for num in self._actives:
+                    assert (num > 0 and num < 7), "Invalid active lines. Values must be from 1 to 6"
+                
+                for line in self._actives:
+                    if mainHex[line - 1] == 1:
+                        mainHex[line - 1] = 0
+                    else:
+                        mainHex[line - 1] = 1
+            else:
+                self._actives = None
 
         elif isinstance(self._actives, int):
             # Handle the case where actives is a single number
