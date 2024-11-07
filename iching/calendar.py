@@ -277,6 +277,16 @@ class Converter(object):
         year = SexagenaryBasic.translateLunarYear(lunarYear)
 
         return (year, month, day)
+    
+    @staticmethod
+    def Solar2SexagenaryText(solar):
+        date = Converter.Solar2Sexagenary(solar)
+        translatedDate = [f"{heavenlyStems[heavenly]} {earthlyBranches[earthly]}" for (heavenly, earthly) in date]
+        return {
+            "year": translatedDate[0],
+            "month": translatedDate[1],
+            "day": translatedDate[2]
+        }
 
 class SexagenaryBasic(object):
     heavenlyStems = heavenlyStems
